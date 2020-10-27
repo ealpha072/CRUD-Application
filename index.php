@@ -11,6 +11,41 @@
 </head>
 <body>
 	<?php require_once 'process.php'; ?>
+	<div class="container">
+	<?php
+		$conn = mysqli_connect('localhost','root','','crud');
+		$myquery = "SELECT * FROM locations";
+		$results = mysqli_query($conn,$myquery);
+	
+		/*$resultArray = mysqli_fetch_assoc($results);
+		show($resultArray);
+		show($resultArray);*/
+	?>
+	<div class="row justify-content-center"> 
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th>Location</th>
+					<th colspan="2">Action</th>
+				</tr>
+			</thead>
+			<?php
+				while($row = mysqli_fetch_assoc($results)): ?>
+					<tr>
+						<td><?php echo $row['name'];?></td>
+						<td><?php echo $row['location'];?></td>
+					</tr>
+				<?php endwhile;?>
+		</table>
+	</div>
+	<?php
+		function show($array){
+			echo "<pre>";
+			print_r($array);
+			echo "</pre>";
+		}
+	?>
 	<div class="row justify-content-center">
 		<form action="process.php" method="post">
 			<div class="form-group">
@@ -26,5 +61,6 @@
 			</div>
 		</form>
 	</div>
+</div>
 </body>
 </html>

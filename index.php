@@ -11,6 +11,15 @@
 </head>
 <body>
 	<?php require_once 'process.php'; ?>
+	<?php if(isset($_SESSION['message'])): ?>
+
+	<div class="alert alert-<?php echo $_SESSION['msg_type']?>">
+		<?php echo $_SESSION['message'];
+		unset($_SESSION['message']);
+		?>
+	</div>
+	<?php endif;?>
+
 	<div class="container">
 	<?php
 		$conn = mysqli_connect('localhost','root','','crud');
@@ -35,6 +44,10 @@
 					<tr>
 						<td><?php echo $row['name'];?></td>
 						<td><?php echo $row['location'];?></td>
+						<td>
+							<a href="index.php?edit=<?php echo $row['id'];?>" class="btn btn-info">Edit</a>
+							<a href="process.php?delete=<?php echo $row['id'];?>" class="btn btn-danger">Delete</a>
+						</td>
 					</tr>
 				<?php endwhile;?>
 		</table>
@@ -50,11 +63,11 @@
 		<form action="process.php" method="post">
 			<div class="form-group">
 				<label for="name">Name</label>
-				<input type="text" name="name" class="form-control">
+				<input type="text" name="name" class="form-control" value="<?php echo $name;?>">
 			</div>
 			<div class="form-group">
 				<label for="location">Location</label>
-				<input type="text" name="location" class="form-control">
+				<input type="text" name="location" class="form-control" value="<?php echo $location;?>">
 			</div>
 			<div class="form-group">
 				<button class="btn btn-success" name="save">Save</button>

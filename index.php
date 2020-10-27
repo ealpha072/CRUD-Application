@@ -61,16 +61,21 @@
 	?>
 	<div class="row justify-content-center">
 		<form action="process.php" method="post">
+			<input type="hidden" name="id" value="<?php echo $id; ?>">
 			<div class="form-group">
 				<label for="name">Name</label>
-				<input type="text" name="name" class="form-control" value="<?php echo $name;?>">
+				<input type="text" name="name" class="form-control" value="<?php echo $name;?>" placeholder="Enter your name">
 			</div>
 			<div class="form-group">
 				<label for="location">Location</label>
-				<input type="text" name="location" class="form-control" value="<?php echo $location;?>">
+				<input type="text" name="location" class="form-control" placeholder="Enter Location" value="<?php echo $location;?>">
 			</div>
 			<div class="form-group">
-				<button class="btn btn-success" name="save">Save</button>
+				<?php if($update==true): ?>
+					<button class="btn btn-primary" name="update">Update</button>
+				<?php else:?>
+					<button class="btn btn-primary" name="save">Save</button>
+				<?php endif ?>
 			</div>
 		</form>
 	</div>

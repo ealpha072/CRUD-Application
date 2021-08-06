@@ -1,6 +1,6 @@
 # CRUD-PHP
 
-This simple php system can be used to create read update and delete names and locations of users.
+This repository is for creating, reading, updating and deleting(CRUD) entries from a database.
 
 ## Techs used;
   * `PHP` -- Backend technology
